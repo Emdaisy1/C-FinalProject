@@ -5,4 +5,6 @@ using namespace std;
 #include <string>
 
 void showBoard(char *);
-bool winCheck();
+bool winCheck(char *);
+bool winTry(char *);
+bool blockUser(char *);
