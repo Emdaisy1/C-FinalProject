@@ -24,9 +24,15 @@
     <ClCompile Include="EveryTurnFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UserChoices.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComputerChoices.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserChoices.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

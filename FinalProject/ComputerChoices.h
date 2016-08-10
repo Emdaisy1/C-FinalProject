@@ -8,3 +8,4 @@ void showBoard(char *);
 bool winCheck(char *);
 bool winTry(char *);
 bool blockUser(char *);
+void computerMove(char *);

@@ -1,15 +1,17 @@
 #include "ComputerChoices.h"
+#include "UserChoices.h"
 
 //check for win and display game board functions
 
 bool winCheck(char * gameBoard) {
-	if (true) { //placeholder
-		return false;
-	}
-	else
-	{
-		return true;
-	}
+	//if (true) { //placeholder
+	//	return false;
+	//}
+	//else
+	//{
+	//	return true;
+	//}
+	return false;
 }
 
 //displays game board
