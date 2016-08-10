@@ -3,3 +3,6 @@
 using namespace std;
 #include <iomanip>
 #include <string>
+
+void showBoard(char *);
+bool winCheck();

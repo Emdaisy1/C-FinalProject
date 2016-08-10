@@ -2,10 +2,16 @@
 int main() {
 	bool playingGame = false;
 	string playAgain;
+	bool endOfGame = false;
 	do{
 		playingGame = false;
 		char gameBoard[9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-		cout << gameBoard[1];
+
+		//play the game
+		do {
+			showBoard(gameBoard);
+			endOfGame = winCheck();
+		} while (endOfGame);
 
 		cout << "Would you like to play again? Enter 'y' or 'n'." << endl;
 		getline(cin, playAgain);
