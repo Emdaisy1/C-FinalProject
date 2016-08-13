@@ -20,7 +20,7 @@ bool winTry(char * gameBoard) {
 		}
 	}
 
-	for (int i = 0; i <= 6; i += 3) {
+	for (int i = 0; i <= 2; i += 1) {
 		if (gameBoard[i] == 'X' && gameBoard[i + 3] == 'X' && gameBoard[i + 6] != 'O' ) {
 			gameBoard[i + 6] = 'X';
 			return true;
@@ -84,7 +84,7 @@ bool blockUser(char * gameBoard) {
 		}
 	}
 
-	for (int i = 0; i <= 6; i += 3) {
+	for (int i = 0; i <= 2; i += 1) {
 		if (gameBoard[i] == 'O' && gameBoard[i + 3] == 'O' && gameBoard[i + 6] != 'O' && gameBoard[i + 6] != 'X') {
 			gameBoard[i + 6] = 'X';
 			return true;

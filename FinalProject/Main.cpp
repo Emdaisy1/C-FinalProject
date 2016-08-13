@@ -6,13 +6,14 @@ int main() {
 	bool playingGame = false;
 	string playAgain;
 	char computerIcon, playerIcon;
-	bool endOfGame = false;
+	int endOfGame = -1;
 	bool validSpace, turnOver;
 	int userMove, turnNum;
 	//Run the game at least once, then keep running it IF the user chooses to play again
 	do{
 		//Set playingGame back to false so game will only run again if user chooses to play again later
 		playingGame = false;
+		endOfGame = -1;
 		turnNum = 1;
 		userMove = -1;
 		//Create an empty game board
@@ -56,9 +57,20 @@ int main() {
 				makeMove(gameBoard, userMove);
 			}
 			showBoard(gameBoard);
-			endOfGame = winCheck(gameBoard);
+			endOfGame = winCheck(gameBoard, playerIcon, computerIcon);
 			turnNum++;
-		}while(endOfGame == false && turnNum < 10);
+		}while(endOfGame = -1 && turnNum < 10);
+
+		//Display winner
+		if (endOfGame == 1) {
+			cout << "Computer wins!" << endl;
+		}
+		else if (endOfGame == 0) {
+			cout << "You win!" << endl;
+		}
+		else {
+			cout << "Tie!" << endl;
+		}
 
 		//Once the game is over, prompt the user to play again
 		cout << "Would you like to play again? Enter 'y' or 'n'." << endl;

@@ -5,7 +5,7 @@ using namespace std;
 #include <string>
 
 void showBoard(char *);
-bool winCheck(char *);
+int winCheck(char *, char&, char&);
 bool winTry(char *);
 bool blockUser(char *);
 void computerMove(char *);
