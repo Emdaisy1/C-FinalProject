@@ -4,10 +4,10 @@
 int main() {
 	//Set up global variables
 	bool playingGame = false;
-	string playAgain;
+	string playAgain, easyChoose;
 	char computerIcon, playerIcon;
 	int endOfGame = -1;
-	bool validSpace, turnOver;
+	bool validSpace, turnOver, easyMode;
 	int userMove, turnNum;
 	//Run the game at least once, then keep running it IF the user chooses to play again
 	do{
@@ -16,6 +16,21 @@ int main() {
 		endOfGame = -1;
 		turnNum = 1;
 		userMove = -1;
+		easyMode = false;
+		
+		//ask user if they want to play in easy mode
+		cout << endl << "Would you like to play on easy? Enter 'y' or 'n'." << endl;
+		getline(cin, easyChoose);
+		easyChoose = tolower(easyChoose.at(0));
+		while (easyChoose != "y" && easyChoose != "n") {
+			cout << endl << "Please enter a valid input of 'y' or 'n'." << endl;
+			getline(cin, easyChoose);
+			easyChoose = tolower(easyChoose.at(0));
+		}
+		if (easyChoose == "y") {
+			easyMode = true;
+		}
+		
 		//Create an empty game board
 		char gameBoard[9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
@@ -35,10 +50,10 @@ int main() {
 				turnOver = false;
 				cout << "Computer's turn..." << endl;
 				turnOver = winTry(gameBoard);
-				if (turnOver == false) {
+				if (turnOver == false && easyMode == false) {
 					turnOver = blockUser(gameBoard);
 				}
-				if (turnOver == false) {
+				if (turnOver == false && easyMode == false) {
 					turnOver = choseLogicalSpace(gameBoard);
 				}
 				if (turnOver == false) {
