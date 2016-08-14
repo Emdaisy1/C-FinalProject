@@ -129,23 +129,111 @@ bool blockUser(char * gameBoard) {
 }
 
 bool choseLogicalSpace(char * gameBoard) {
-	// if user chooses a corner choose the opposite corner to reduce chance of winning
-	if (gameBoard[0] == 'O' && gameBoard[8] == '9') {
+	// if user chooses a corner choose the opposite corner to reduce chance of winning and if both corners are taken then choses one of the other corners
+	if (gameBoard[0] == 'O') {
+		if (gameBoard[8] == '9') {
+			gameBoard[8] = 'X';
+			return true;
+		}
+		if (gameBoard[2] == '3') {
+			gameBoard[2] = 'X';
+			return true;
+		}
+		if (gameBoard[6] == '7') {
+			gameBoard[6] = 'X';
+			return true;
+		}
+	}
+	if (gameBoard[8] == 'O') {
+		if (gameBoard[0] == '1') {
+			gameBoard[0] = 'X';
+			return true;
+		}
+		if (gameBoard[2] == '3') {
+			gameBoard[2] = 'X';
+			return true;
+		}
+		if (gameBoard[6] == '7') {
+			gameBoard[6] = 'X';
+			return true;
+		}
+	}
+	if (gameBoard[2] == 'O') {
+		if (gameBoard[6] == '7') {
+			gameBoard[6] = 'X';
+			return true;
+		}
+		if (gameBoard[8] == '9') {
+			gameBoard[8] = 'X';
+			return true;
+		}
+		if (gameBoard[0] == '1') {
+			gameBoard[0] = 'X';
+			return true;
+		}
+	}
+	if (gameBoard[6] == 'O') {
+		if (gameBoard[2] == '3') {
+			gameBoard[2] = 'X';
+			return true;
+		}
+		if (gameBoard[8] == '9') {
+			gameBoard[8] = 'X';
+			return true;
+		}
+		if (gameBoard[0] == '1') {
+			gameBoard[0] = 'X';
+			return true;
+		}
+	}
+	
+	//choose opposite corner of an x
+	if (gameBoard[0] == 'X' && gameBoard[8] == '9') {	
 		gameBoard[8] = 'X';
 		return true;
 	}
-	if (gameBoard[8] == 'O' && gameBoard[0] == '1') {
+	if (gameBoard[8] == 'X' && gameBoard[0] == '1') {
 		gameBoard[0] = 'X';
 		return true;
 	}
-	if (gameBoard[2] == 'O' && gameBoard[6] == '7') {
+	if (gameBoard[2] == 'X' && gameBoard[6] == '7') {
 		gameBoard[6] = 'X';
 		return true;
 	}
-	if (gameBoard[6] == 'O' && gameBoard[2] == '3') {
+	if (gameBoard[6] == 'X' && gameBoard[2] == '3') {
 		gameBoard[2] = 'X';
 		return true;
 	}
+
+	/*if not in easy mode, and no other move has been made then moves will be chosen from this pool of logical ones
+	before useing compleate random ones*/
+	srand(time(NULL));
+	int compChoice;
+	bool valid = true;
+	do {
+		compChoice = (rand() % 4 + 1);
+		if (compChoice == 1 && gameBoard[0] == '1') {
+			gameBoard[0] = 'X';
+			valid = false;
+			return true;
+		}
+		if (compChoice == 2 && gameBoard[2] == '3') {
+			gameBoard[2] = 'X';
+			valid = false;
+			return true;
+		}
+		if (compChoice == 3 && gameBoard[6] == '7') {
+			gameBoard[6] = 'X';
+			valid = false;
+			return true;
+		}
+		if (compChoice == 4 && gameBoard[8] == '9') {
+			gameBoard[8] = 'X';
+			valid = false;
+			return true;
+		}
+
+	} while (valid);
 	return false;
 }
 

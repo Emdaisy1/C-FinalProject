@@ -56,7 +56,7 @@ int main() {
 				if (turnOver == false && easyMode == false) {
 					turnOver = choseLogicalSpace(gameBoard);
 				}
-				if (turnOver == false) {
+				if (turnOver == false && easyMode == true) {
 					turnOver = choseRandSpace(gameBoard);
 				}
 				if (turnOver == false) {
