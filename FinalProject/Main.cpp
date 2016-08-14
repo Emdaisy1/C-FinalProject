@@ -39,6 +39,12 @@ int main() {
 					turnOver = blockUser(gameBoard);
 				}
 				if (turnOver == false) {
+					turnOver = choseLogicalSpace(gameBoard);
+				}
+				if (turnOver == false) {
+					turnOver = choseRandSpace(gameBoard);
+				}
+				if (turnOver == false) {
 					computerMove(gameBoard);
 				}
 			}
@@ -73,6 +79,7 @@ int main() {
 		}
 
 		//Once the game is over, prompt the user to play again
+		cin.ignore();
 		cout << "Would you like to play again? Enter 'y' or 'n'." << endl;
 		getline(cin, playAgain);
 		playAgain = tolower(playAgain.at(0));

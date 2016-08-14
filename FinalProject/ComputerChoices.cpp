@@ -128,6 +128,45 @@ bool blockUser(char * gameBoard) {
 	return false;
 }
 
+bool choseLogicalSpace(char * gameBoard) {
+	// if user chooses a corner choose the opposite corner to reduce chance of winning
+	if (gameBoard[0] == 'O' && gameBoard[8] == '9') {
+		gameBoard[8] = 'X';
+		return true;
+	}
+	if (gameBoard[8] == 'O' && gameBoard[0] == '1') {
+		gameBoard[0] = 'X';
+		return true;
+	}
+	if (gameBoard[2] == 'O' && gameBoard[6] == '7') {
+		gameBoard[6] = 'X';
+		return true;
+	}
+	if (gameBoard[6] == 'O' && gameBoard[2] == '3') {
+		gameBoard[2] = 'X';
+		return true;
+	}
+	return false;
+}
+
+bool choseRandSpace(char * gameBoard) {
+	//advance randomizer seed foward by value of run time
+	srand(time(NULL));
+	int compChoice;
+	bool valid = true;
+	do {
+		/*user rand to get user choice between position 0-8 and see if it is already occupied, 
+		if available claim spot, oterwise choose another spot*/
+		compChoice = (rand() % 9);
+		if (gameBoard[compChoice] != 'O' && gameBoard[compChoice] != 'X') {
+			gameBoard[compChoice] = 'X';
+			valid = false;
+			return true;
+		}
+	} while (valid);
+	return false;
+}
+
 void computerMove(char * gameBoard) {
 	cout << "Couldn't win or block user";
 }
