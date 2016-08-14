@@ -59,7 +59,7 @@ int main() {
 			showBoard(gameBoard);
 			endOfGame = winCheck(gameBoard, playerIcon, computerIcon);
 			turnNum++;
-		}while(endOfGame = -1 && turnNum < 10);
+		}while(endOfGame == -1 && turnNum < 10);
 
 		//Display winner
 		if (endOfGame == 1) {
