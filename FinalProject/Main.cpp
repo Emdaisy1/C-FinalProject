@@ -4,12 +4,14 @@
 int main() {
 	//Set up global variables
 	bool playingGame = false;
-	string playAgain, easyChoose;
+	string playAgain, easyChoose, Username;
 	char computerIcon, playerIcon;
 	int endOfGame = -1;
 	bool validSpace, turnOver, easyMode;
 	int userMove, turnNum;
 	//Run the game at least once, then keep running it IF the user chooses to play again
+	cout << endl << "Please enter your name: " << endl;
+	getline(cin, Username);
 	do{
 		//Set playingGame back to false so game will only run again if user chooses to play again later
 		playingGame = false;
@@ -66,7 +68,7 @@ int main() {
 			else{
 				validSpace = false;
 				do {
-					cout << "Please enter what space number you want to choose." << endl << "This must be an unclaimed space" << endl;
+					cout << Username << " please enter what space number you want to choose." << endl << "This must be an unclaimed space" << endl;
 					cin >> userMove;
 					while(userMove < 1 || userMove > 9) {
 						cout << "Please choose a valid space number." << endl;
@@ -87,7 +89,7 @@ int main() {
 			cout << "Computer wins!" << endl;
 		}
 		else if (endOfGame == 0) {
-			cout << "You win!" << endl;
+			cout << Username << " Won!" << endl;
 		}
 		else {
 			cout << "Tie!" << endl;
@@ -95,7 +97,7 @@ int main() {
 
 		//Once the game is over, prompt the user to play again
 		cin.ignore();
-		cout << "Would you like to play again? Enter 'y' or 'n'." << endl;
+		cout << Username << ", would you like to play again? Enter 'y' or 'n'." << endl;
 		getline(cin, playAgain);
 		playAgain = tolower(playAgain.at(0));
 		while (playAgain != "y" && playAgain != "n") {
@@ -108,6 +110,6 @@ int main() {
 		}
 	} while (playingGame);
 	//Bid the user farewell
-	cout << "Thanks for playing!" << endl << "Goodbye!" << endl;
+	cout << "Thanks for playing!" << endl << "Goodbye "<< Username <<"!" << endl;
 	system("Pause");
 }
