@@ -10,7 +10,7 @@ bool checkSpace(char * gameBoard, int userMove) {
 	}
 }
 
-//Sets the game board where the user choice to the user's symbol (O)
+//Sets the game board where the user chose to the user's symbol (O)
 void makeMove(char * gameBoard, int userMove) {
 	gameBoard[userMove - 1] = 'O';
 }
