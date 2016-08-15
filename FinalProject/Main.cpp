@@ -64,7 +64,7 @@ int main() {
 				if (turnOver == false && easyMode == false) {
 					turnOver = chooseLogicalSpace(gameBoard);
 				}
-				//If the computer didn't make a move yet, and the user isn't playing easy mode, run chooseRandSpace
+				//If the computer didn't make a move yet, and the user is playing on easy mode, run chooseRandSpace
 				if (turnOver == false && easyMode == true) {
 					turnOver = chooseRandSpace(gameBoard);
 				}
