@@ -9,6 +9,5 @@ void showBoard(char *);
 int winCheck(char *, char&, char&);
 bool winTry(char *);
 bool blockUser(char *);
-bool choseRandSpace(char *);
-bool choseLogicalSpace(char *);
-void computerMove(char *);
+bool chooseRandSpace(char *);
+bool chooseLogicalSpace(char *);
