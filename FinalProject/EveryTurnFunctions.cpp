@@ -1,11 +1,12 @@
 #include "ComputerChoices.h"
 #include "UserChoices.h"
 
-//check for win and display game board functions
-
+//Check to see if either the computer or user has won
 int winCheck(char * gameBoard, char& playerIcon, char& computerIcon) {
-	//return of 0 means player wins, 1 means computer wins, -1 is no win
-
+	//Return of 0 means player wins, 1 means computer wins, -1 is no win
+	
+	//Check each row - if all values are the same, see if they match the player or computer icon
+	//Return the appropriate value (0 or 1) depending on who has all 3 spaces
 	for (int i = 0; i <= 6; i += 3) {
 		if (gameBoard[i] == gameBoard[i + 1] && gameBoard[i] == gameBoard[i + 2]) {
 			if (gameBoard[i] == playerIcon) {
@@ -17,6 +18,8 @@ int winCheck(char * gameBoard, char& playerIcon, char& computerIcon) {
 		}
 	}
 
+	//Check each column - if all values are the same, see if they match the player or computer icon
+	//Return the appropriate value (0 or 1) depending on who has all 3 spaces
 	for (int i = 0; i <= 2; i += 1) {
 		if (gameBoard[i] == gameBoard[i + 3] && gameBoard[i] == gameBoard[i + 6]) {
 			if (gameBoard[i] == playerIcon) {
@@ -28,6 +31,8 @@ int winCheck(char * gameBoard, char& playerIcon, char& computerIcon) {
 		}
 	}
 
+	//Each "if" checks one set of diagonals to see if all 3 values are the same, checks if they match the player or computer icon
+	//Returns the appropriate value (0 or 1) depending on who has all 3 spaces
 	if (gameBoard[0] == gameBoard[4] && gameBoard[0] == gameBoard[8]) {
 		if (gameBoard[0] == playerIcon) {
 			return 0;
@@ -45,10 +50,11 @@ int winCheck(char * gameBoard, char& playerIcon, char& computerIcon) {
 		}
 	}
 
+	//If no winner was found, return -1
 	return -1;
 }
 
-//displays game board
+//Prints game board
 void showBoard(char * gameBoard) {
 	cout << endl;
 	for (int i = 0; i < 9; i+=3)
