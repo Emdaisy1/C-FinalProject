@@ -5,4 +5,4 @@ using namespace std;
 #include <string>
 
 bool checkSpace(char *, int);
-void makeMove(char *, int);
+void makeMove(char *, int, char&);

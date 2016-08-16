@@ -4,7 +4,7 @@
 int main() {
 	//Set up global variables
 	bool playingGame = false;
-	string playAgain, easyChoose, Username;
+	string playAgain, easyChoose, Username, iconChoice;
 	char computerIcon, playerIcon;
 	int endOfGame = -1;
 	bool validSpace, turnOver, easyMode;
@@ -34,13 +34,30 @@ int main() {
 		if (easyChoose == "y") {
 			easyMode = true;
 		}
+
+		//Ask the user if they want to be 'X' or 'O', and keep prompting until a valid response is given
+		cout << endl << "Would you like to be X or O? Enter 'x' or 'o'." << endl;
+		getline(cin, iconChoice);
+		iconChoice = tolower(iconChoice.at(0));
+		while (iconChoice != "x" && iconChoice != "o") {
+			cout << endl << "Please enter a valid input of 'x' or 'o'." << endl;
+			getline(cin, iconChoice);
+			iconChoice = tolower(iconChoice.at(0));
+		}
+		if (iconChoice == "o") {
+			//Computer set to'X'and user set to 'O'
+			computerIcon = 'X';
+			playerIcon = 'O';
+		}
+		else {
+			//Computer set to'O'and user set to 'X'
+			computerIcon = 'O';
+			playerIcon = 'X';
+		}
 		
 		//Create an empty game board
 		char gameBoard[9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
-		//Computer set to'X'and user set to O
-		computerIcon = 'X';
-		playerIcon = 'O';
 
 		//Notify user computer will start
 		cout << "The computer will begin the game." << endl;
@@ -55,18 +72,18 @@ int main() {
 				turnOver = false;
 				cout << "Computer's turn..." << endl;
 				//Run winTry method
-				turnOver = winTry(gameBoard);
+				turnOver = winTry(gameBoard, playerIcon, computerIcon);
 				//If the computer didn't make a move in winTry, and the user isn't playing easy mode, run blockUser method
 				if (turnOver == false && easyMode == false) {
-					turnOver = blockUser(gameBoard);
+					turnOver = blockUser(gameBoard, playerIcon, computerIcon);
 				}
 				//If the computer didn't make a move yet, and the user isn't playing easy mode, run chooseLogicalSpace
 				if (turnOver == false && easyMode == false) {
-					turnOver = chooseLogicalSpace(gameBoard);
+					turnOver = chooseLogicalSpace(gameBoard, playerIcon, computerIcon);
 				}
 				//If the computer didn't make a move yet, and the user is playing on easy mode, run chooseRandSpace
 				if (turnOver == false && easyMode == true) {
-					turnOver = chooseRandSpace(gameBoard);
+					turnOver = chooseRandSpace(gameBoard, playerIcon, computerIcon);
 				}
 			}
 			//ELSE it's the user's turn
@@ -75,7 +92,7 @@ int main() {
 				validSpace = false;
 				do {
 					//Prompt user to choose a valid game board space and keep prompting until a valid number/space is chosen
-					cout << Username << " please enter what space number you want to choose." << endl << "This must be an unclaimed space" << endl;
+					cout << Username << " please enter what space number you want to choose." << endl << "This must be an unclaimed space." << endl;
 					cin >> userMove;
 					while(userMove < 1 || userMove > 9) {
 						cout << "Please choose a valid space number." << endl;
@@ -85,7 +102,7 @@ int main() {
 					validSpace = checkSpace(gameBoard, userMove);
 				}while (!validSpace);
 				//When the user chooses a valid space, makeMove updates the space to be theirs
-				makeMove(gameBoard, userMove);
+				makeMove(gameBoard, userMove, playerIcon);
 			}
 			//Print the game board after each turn
 			showBoard(gameBoard);

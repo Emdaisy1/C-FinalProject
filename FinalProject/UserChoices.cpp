@@ -11,8 +11,8 @@ bool checkSpace(char * gameBoard, int userMove) {
 }
 
 //Sets the game board where the user chose to the user's symbol (O)
-void makeMove(char * gameBoard, int userMove) {
-	gameBoard[userMove - 1] = 'O';
+void makeMove(char * gameBoard, int userMove, char& playerIcon) {
+	gameBoard[userMove - 1] = playerIcon;
 }
 
 
